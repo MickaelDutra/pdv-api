@@ -1,0 +1,5 @@
+com/pdv/api/product/controller/ProductControllerTest.class
+com/pdv/api/sale/controller/SaleControllerTest.class
+com/pdv/api/stock/controller/StockMovementControllerTest.class
+com/pdv/api/controller/HealthControllerTest.class
+com/pdv/api/controller/AuthControllerTest.class
