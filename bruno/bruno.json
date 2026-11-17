@@ -1,4 +1,7 @@
 {
   "name": "PDV API",
-  "version": "1.0.0"
+  "version": "1",
+  "type": "collection",
+  "folder": true,
+  "description": "API for PDV"
 }

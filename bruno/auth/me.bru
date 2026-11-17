@@ -1,12 +1,14 @@
-meta:
+meta {
   name: Get Current User
   type: http
   seq: 3
-get:
+}
+
+get {
   url: {{baseUrl}}/api/auth/me
-  params: []
-  headers: []
-  auth:
-    type: bearer
-    token: {{authToken}}
-  body: none
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}

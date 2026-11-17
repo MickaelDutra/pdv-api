@@ -1,13 +1,14 @@
-meta:
+meta {
   name: Get Sale by ID
   type: http
   seq: 3
-get:
+}
+
+get {
   url: {{baseUrl}}/api/sales/{{saleId}}
-  params: []
-  headers:
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body: none
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}

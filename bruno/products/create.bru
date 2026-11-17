@@ -1,33 +1,36 @@
-meta:
+meta {
   name: Create Product
   type: http
   seq: 1
-post:
+}
+
+post {
   url: {{baseUrl}}/api/products
-  params: []
-  headers:
-    - name: Content-Type
-      value: application/json
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body:
-    type: json
-    raw: |
-      {
-        "name": "Produto Teste",
-        "sku": "TEST-001",
-        "barcode": "7891234567890",
-        "description": "Descrição do produto",
-        "unit": "UN",
-        "quantityPerBox": 12,
-        "weight": 0.5,
-        "brand": "Marca Teste",
-        "category": "Categoria Teste",
-        "cost": 10.00,
-        "price": 25.00,
-        "stockQty": 100,
-        "active": true,
-        "status": "ATIVO"
-      }
+  body: json
+}
+
+headers {
+  - name: Content-Type
+    value: application/json
+  - name: Authorization
+    value: Bearer {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Produto Teste",
+    "sku": "TEST-001",
+    "barcode": "7891234567890",
+    "description": "Descrição do produto",
+    "unit": "UN",
+    "quantityPerBox": 12,
+    "weight": 0.5,
+    "brand": "Marca Teste",
+    "category": "Categoria Teste",
+    "cost": 10.00,
+    "price": 25.00,
+    "stockQty": 100,
+    "active": true,
+    "status": "ATIVO"
+  }
+}

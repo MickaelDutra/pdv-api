@@ -1,16 +1,20 @@
-meta:
+meta {
   name: Reject Payment
   type: http
   seq: 5
-put:
+}
+
+put {
   url: {{baseUrl}}/api/payments/{{paymentId}}/reject
-  params:
-    - name: reason
-      value: "Cartão recusado"
-      disabled: false
-  headers:
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body: none
+}
+
+params {
+  - name: reason
+    value: "Cartão recusado"
+    disabled: false
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}

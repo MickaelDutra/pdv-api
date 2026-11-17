@@ -1,16 +1,20 @@
-meta:
+meta {
   name: Low Stock Report
   type: http
   seq: 4
-get:
+}
+
+get {
   url: {{baseUrl}}/api/reports/low-stock
-  params:
-    - name: threshold
-      value: "10"
-      disabled: false
-  headers:
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body: none
+}
+
+params {
+  - name: threshold
+    value: "10"
+    disabled: false
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}

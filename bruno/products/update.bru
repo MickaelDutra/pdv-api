@@ -1,33 +1,36 @@
-meta:
+meta {
   name: Update Product
   type: http
   seq: 4
-put:
+}
+
+put {
   url: {{baseUrl}}/api/products/{{productId}}
-  params: []
-  headers:
-    - name: Content-Type
-      value: application/json
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body:
-    type: json
-    raw: |
-      {
-        "name": "Produto Atualizado",
-        "sku": "TEST-001",
-        "barcode": "7891234567890",
-        "description": "Descrição atualizada",
-        "unit": "UN",
-        "quantityPerBox": 12,
-        "weight": 0.5,
-        "brand": "Marca Teste",
-        "category": "Categoria Teste",
-        "cost": 12.00,
-        "price": 30.00,
-        "stockQty": 90,
-        "active": true,
-        "status": "ATIVO"
-      }
+  body: json
+}
+
+headers {
+  - name: Content-Type
+    value: application/json
+  - name: Authorization
+    value: Bearer {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Produto Atualizado",
+    "sku": "TEST-001",
+    "barcode": "7891234567890",
+    "description": "Descrição atualizada",
+    "unit": "UN",
+    "quantityPerBox": 12,
+    "weight": 0.5,
+    "brand": "Marca Teste",
+    "category": "Categoria Teste",
+    "cost": 12.00,
+    "price": 30.00,
+    "stockQty": 90,
+    "active": true,
+    "status": "ATIVO"
+  }
+}

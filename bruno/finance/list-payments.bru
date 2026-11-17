@@ -1,19 +1,23 @@
-meta:
+meta {
   name: List Payments
   type: http
   seq: 2
-get:
+}
+
+get {
   url: {{baseUrl}}/api/payments
-  params:
-    - name: saleId
-      value: ""
-      disabled: true
-    - name: status
-      value: ""
-      disabled: true
-  headers:
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body: none
+}
+
+params {
+  - name: saleId
+    value: ""
+    disabled: true
+  - name: status
+    value: ""
+    disabled: true
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}

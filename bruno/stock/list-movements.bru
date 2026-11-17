@@ -1,19 +1,23 @@
-meta:
+meta {
   name: List Stock Movements
   type: http
   seq: 2
-get:
+}
+
+get {
   url: {{baseUrl}}/api/stock/movements
-  params:
-    - name: productId
-      value: ""
-      disabled: true
-    - name: type
-      value: ""
-      disabled: true
-  headers:
-    - name: Authorization
-      value: Bearer {{authToken}}
-  auth:
-    type: none
-  body: none
+}
+
+params {
+  - name: productId
+    value: ""
+    disabled: true
+  - name: type
+    value: ""
+    disabled: true
+}
+
+headers {
+  - name: Authorization
+    value: Bearer {{authToken}}
+}
