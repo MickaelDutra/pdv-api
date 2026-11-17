@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+AGENTS.md
 
 # Build / IDE
 /target/
@@ -10,3 +11,4 @@
 
 # OS
 .DS_Store
+.claude*
