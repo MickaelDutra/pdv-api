@@ -1,5 +1,9 @@
 package com.pdv.api.sale.service;
 
+import com.pdv.api.finance.entity.PaymentMethod;
+import com.pdv.api.finance.entity.PaymentStatus;
+import com.pdv.api.finance.service.PaymentService;
+import com.pdv.api.finance.dto.PaymentRequest;
 import com.pdv.api.product.entity.ProductEntity;
 import com.pdv.api.product.repository.ProductRepository;
 import com.pdv.api.sale.dto.SaleItemRequest;
@@ -27,11 +31,14 @@ public class SaleService {
     private final SaleRepository saleRepository;
     private final ProductRepository productRepository;
     private final StockMovementService stockMovementService;
+    private final PaymentService paymentService;
 
-    public SaleService(SaleRepository saleRepository, ProductRepository productRepository, StockMovementService stockMovementService) {
+    public SaleService(SaleRepository saleRepository, ProductRepository productRepository,
+                       StockMovementService stockMovementService, PaymentService paymentService) {
         this.saleRepository = saleRepository;
         this.productRepository = productRepository;
         this.stockMovementService = stockMovementService;
+        this.paymentService = paymentService;
     }
 
     @Transactional
@@ -54,7 +61,7 @@ public class SaleService {
 
         SaleEntity sale = new SaleEntity(
                 request.customerName(),
-                request.paymentMethod(),
+                request.paymentMethod().name(),
                 request.createdBy(),
                 totalAmount,
                 request.discount() != null ? request.discount() : BigDecimal.ZERO,
@@ -65,7 +72,37 @@ public class SaleService {
         SaleEntity savedSale = saleRepository.save(sale);
         items.forEach(item -> registerStockMovement(item, request.createdBy()));
 
+        // Create payment record for the sale
+        createPaymentRecord(savedSale, request);
+
         return toResponse(savedSale);
+    }
+
+    private void createPaymentRecord(SaleEntity sale, SaleRequest request) {
+        PaymentMethod paymentMethod = request.paymentMethod();
+        BigDecimal grossAmount = sale.getTotalAmount().add(sale.getDiscount());
+        BigDecimal discountAmount = sale.getDiscount();
+        BigDecimal netAmount = sale.getTotalAmount();
+
+        PaymentRequest paymentRequest = new PaymentRequest(
+                sale.getId(),
+                paymentMethod,
+                grossAmount,
+                discountAmount,
+                netAmount,
+                null, // transactionId
+                null, // cardBrand
+                null, // cardLastDigits
+                "Payment for sale #" + sale.getId()
+        );
+
+        // For cash payments, auto-approve; for others, leave as PENDING
+        if (paymentMethod == PaymentMethod.DINHEIRO || paymentMethod == PaymentMethod.PIX) {
+            var payment = paymentService.registerPayment(paymentRequest);
+            paymentService.approvePayment(payment.id(), null);
+        } else {
+            paymentService.registerPayment(paymentRequest);
+        }
     }
 
     public List<SaleResponse> listSales() {
