@@ -8,16 +8,12 @@ get {
   url: {{baseUrl}}/api/payments
 }
 
-params {
-  - name: saleId
-    value: ""
-    disabled: true
-  - name: status
-    value: ""
-    disabled: true
+params:query {
+  saleId: ""
+  status: ""
 }
 
 headers {
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bear {{authToken}}
 }

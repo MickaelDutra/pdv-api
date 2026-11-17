@@ -7,13 +7,12 @@ meta {
 post {
   url: {{baseUrl}}/api/products
   body: json
+  auth: none
 }
 
 headers {
-  - name: Content-Type
-    value: application/json
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }
 
 body:json {

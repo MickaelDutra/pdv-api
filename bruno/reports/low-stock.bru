@@ -8,13 +8,11 @@ get {
   url: {{baseUrl}}/api/reports/low-stock
 }
 
-params {
-  - name: threshold
-    value: "10"
-    disabled: false
+params:query {
+  threshold:"10"
 }
 
 headers {
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }

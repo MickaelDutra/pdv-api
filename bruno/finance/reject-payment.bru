@@ -8,13 +8,11 @@ put {
   url: {{baseUrl}}/api/payments/{{paymentId}}/reject
 }
 
-params {
-  - name: reason
-    value: "Cartão recusado"
-    disabled: false
+params:query {
+  reason: "Cartão recusado"
 }
 
 headers {
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }

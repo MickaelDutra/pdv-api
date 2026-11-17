@@ -7,13 +7,12 @@ meta {
 put {
   url: {{baseUrl}}/api/products/{{productId}}
   body: json
+  auth: none
 }
 
 headers {
-  - name: Content-Type
-    value: application/json
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }
 
 body:json {
@@ -29,7 +28,7 @@ body:json {
     "category": "Categoria Teste",
     "cost": 12.00,
     "price": 30.00,
-    "stockQty": 90,
+    "stockQty": 80,
     "active": true,
     "status": "ATIVO"
   }

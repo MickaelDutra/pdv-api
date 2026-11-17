@@ -8,13 +8,7 @@ put {
   url: {{baseUrl}}/api/payments/{{paymentId}}/approve
 }
 
-params {
-  - name: transactionId
-    value: "txn_approved_789"
-    disabled: false
-}
-
 headers {
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }

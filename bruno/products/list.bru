@@ -6,21 +6,17 @@ meta {
 
 get {
   url: {{baseUrl}}/api/products
+  body: none
+  auth: none
 }
 
-params {
-  - name: name
-    value: ""
-    disabled: true
-  - name: sku
-    value: ""
-    disabled: true
-  - name: barcode
-    value: ""
-    disabled: true
+params:query {
+  ~name: Produto Teste
+  ~sku: TEST-001
+  ~barcode: ""
 }
 
 headers {
-  - name: Authorization
-    value: Bearer {{authToken}}
+  Content-Type: application/json
+  Authorization: Bearer {{authToken}}
 }

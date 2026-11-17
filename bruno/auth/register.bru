@@ -7,19 +7,19 @@ meta {
 post {
   url: {{baseUrl}}/api/auth/register
   body: json
+  auth: none
 }
 
 headers {
-  - name: Content-Type
-    value: application/json
+  Content-Type: application/json
 }
 
 body:json {
   {
-    "username": "admin",
-    "password": "123456",
-    "email": "admin@pdv.com",
-    "fullName": "Admin User",
-    "role": "ADMIN"
+    "username": "CASHIER",
+    "password": "CASHIER",
+    "email": "CASHIER@pdv.com",
+    "fullName": "CASHIER User",
+    "role": "CASHIER"
   }
 }
