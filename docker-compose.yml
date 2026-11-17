@@ -5,9 +5,9 @@ services:
     image: postgres:16-alpine
     container_name: pdv-postgres
     environment:
-      POSTGRES_DB: pdv_db
-      POSTGRES_USER: pdv
-      POSTGRES_PASSWORD: pdv123
+      POSTGRES_DB: ${POSTGRES_DB:-pdv_db}
+      POSTGRES_USER: ${POSTGRES_USER:-pdv}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_postgres_password}
     ports:
       - "5432:5432"
     volumes:
@@ -27,9 +27,11 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/pdv_db
-      DB_USERNAME: pdv
-      DB_PASSWORD: pdv123
+      DB_URL: ${DB_URL:-jdbc:postgresql://postgres:5432/pdv_db}
+      DB_USERNAME: ${DB_USERNAME:-pdv}
+      DB_PASSWORD: ${DB_PASSWORD:-change_me_db_password}
+      JWT_SECRET: ${JWT_SECRET:-change_me_jwt_secret_for_local_dev_please_replace_123456}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-3600000}
     ports:
       - "8080:8080"
     restart: unless-stopped

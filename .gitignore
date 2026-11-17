@@ -1,0 +1,12 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build / IDE
+/target/
+/.idea/
+/.vscode/
+
+# OS
+.DS_Store

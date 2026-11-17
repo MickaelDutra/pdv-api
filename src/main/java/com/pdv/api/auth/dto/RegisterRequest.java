@@ -1,7 +1,9 @@
 package com.pdv.api.auth.dto;
 
+import com.pdv.api.auth.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record RegisterRequest(
@@ -20,7 +22,7 @@ public record RegisterRequest(
         @NotBlank(message = "Full name is required")
         String fullName,
 
-        @NotBlank(message = "Role is required")
-        String role
+        @NotNull(message = "Role is required")
+        Role role
 ) {
 }

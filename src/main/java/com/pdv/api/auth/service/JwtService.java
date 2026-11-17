@@ -19,9 +19,18 @@ public class JwtService {
     private final long expirationMs;
 
     public JwtService(
-            @Value("${jwt.secret:pdv-local-secret-change-me-please-use-a-long-and-secure-value}") String secret,
+            @Value("${jwt.secret:change_me_jwt_secret_for_local_dev_please_replace_123456}") String secret,
             @Value("${jwt.expiration-ms:3600000}") long expirationMs) {
-        this.secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        if (secret == null || secret.isBlank()) {
+            throw new IllegalArgumentException("JWT secret is missing. Set the JWT_SECRET environment variable.");
+        }
+
+        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        if (keyBytes.length < 32) {
+            throw new IllegalArgumentException("JWT secret must be at least 32 bytes long. Set JWT_SECRET to a stronger value.");
+        }
+
+        this.secretKey = Keys.hmacShaKeyFor(keyBytes);
         this.expirationMs = expirationMs;
     }
 
