@@ -1,0 +1,16 @@
+meta:
+  name: Daily Sales Report
+  type: http
+  seq: 1
+get:
+  url: {{baseUrl}}/api/reports/daily-sales
+  params:
+    - name: date
+      value: "2026-11-17"
+      disabled: false
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

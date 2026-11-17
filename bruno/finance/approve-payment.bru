@@ -1,0 +1,16 @@
+meta:
+  name: Approve Payment
+  type: http
+  seq: 4
+put:
+  url: {{baseUrl}}/api/payments/{{paymentId}}/approve
+  params:
+    - name: transactionId
+      value: "txn_approved_789"
+      disabled: false
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

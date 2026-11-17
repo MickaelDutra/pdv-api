@@ -1,0 +1,13 @@
+meta:
+  name: List Sales
+  type: http
+  seq: 2
+get:
+  url: {{baseUrl}}/api/sales
+  params: []
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

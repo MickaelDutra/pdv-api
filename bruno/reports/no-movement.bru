@@ -1,0 +1,16 @@
+meta:
+  name: No Movement Report
+  type: http
+  seq: 5
+get:
+  url: {{baseUrl}}/api/reports/no-movement
+  params:
+    - name: daysWithoutMovement
+      value: "30"
+      disabled: false
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

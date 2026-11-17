@@ -1,0 +1,13 @@
+meta:
+  name: Get Payment by ID
+  type: http
+  seq: 3
+get:
+  url: {{baseUrl}}/api/payments/{{paymentId}}
+  params: []
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

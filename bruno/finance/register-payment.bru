@@ -1,0 +1,28 @@
+meta:
+  name: Register Payment
+  type: http
+  seq: 1
+post:
+  url: {{baseUrl}}/api/payments
+  params: []
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body:
+    type: json
+    raw: |
+      {
+        "saleId": "{{saleId}}",
+        "paymentMethod": "CARTAO_CREDITO",
+        "grossAmount": 49.50,
+        "discountAmount": 5.00,
+        "netAmount": 44.50,
+        "transactionId": "txn_123456",
+        "cardBrand": "VISA",
+        "cardLastDigits": "1234",
+        "notes": "Pagamento via cartão de crédito"
+      }

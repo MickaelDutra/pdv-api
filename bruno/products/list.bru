@@ -1,0 +1,22 @@
+meta:
+  name: List Products
+  type: http
+  seq: 2
+get:
+  url: {{baseUrl}}/api/products
+  params:
+    - name: name
+      value: ""
+      disabled: true
+    - name: sku
+      value: ""
+      disabled: true
+    - name: barcode
+      value: ""
+      disabled: true
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  auth:
+    type: none
+  body: none

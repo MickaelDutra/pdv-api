@@ -1,0 +1,22 @@
+meta:
+  name: Register User
+  type: http
+  seq: 1
+post:
+  url: {{baseUrl}}/api/auth/register
+  params: []
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth:
+    type: none
+  body:
+    type: json
+    raw: |
+      {
+        "username": "admin",
+        "password": "123456",
+        "email": "admin@pdv.com",
+        "fullName": "Admin User",
+        "role": "ADMIN"
+      }
