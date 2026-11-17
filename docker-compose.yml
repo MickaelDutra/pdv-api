@@ -2,12 +2,12 @@ version: "3.9"
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:15.10-alpine
     container_name: pdv-postgres
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-pdv_db}
       POSTGRES_USER: ${POSTGRES_USER:-pdv}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_postgres_password}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_db_password}
     ports:
       - "5432:5432"
     volumes:
