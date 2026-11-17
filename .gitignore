@@ -2,7 +2,12 @@
 .env
 .env.*
 !.env.example
+
+# Documentation
 AGENTS.md
+arquitetura.md
+backend-plano.md
+docs/agents/
 
 # Build / IDE
 /target/
