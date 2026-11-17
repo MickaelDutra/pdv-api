@@ -10,7 +10,6 @@ import com.pdv.api.report.dto.RevenueReportResponse;
 import com.pdv.api.sale.entity.SaleEntity;
 import com.pdv.api.sale.entity.SaleItemEntity;
 import com.pdv.api.sale.repository.SaleRepository;
-import com.pdv.api.stock.entity.MovementType;
 import com.pdv.api.stock.entity.StockMovementEntity;
 import com.pdv.api.stock.repository.StockMovementRepository;
 import org.springframework.stereotype.Service;
